@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ProfileSearchPage page.
+ * Generated class for the ProfileSearchResultPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,24 +10,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-profile-search',
-  templateUrl: 'profile-search.html',
+  selector: 'page-profile-search-result',
+  templateUrl: 'profile-search-result.html',
 })
-export class ProfileSearchPage {
+export class ProfileSearchResultPage {
 
   username: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfileSearchPage');
-  }
-
-  getUserInformation(): void {
-    this.navCtrl.push('ProfileSearchResultPage', {
-      username: this.username
-    })
+  ionViewWillLoad() {
+    this.username = this.navParams.get('username');
+    console.log(this.username);
   }
 
 }
