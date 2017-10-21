@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GithubService } from '../../providers/github-service/github-service';
 import { User } from '../../models/user.interface';
 import { Repository } from '../../models/repository.interface';
-@IonicPage()
+@IonicPage({
+  segment: 'profile/results/:username'
+})
 @Component({
   selector: 'page-profile-search-result',
   templateUrl: 'profile-search-result.html',
@@ -28,6 +30,7 @@ export class ProfileSearchResultPage {
     // this.github.mockGetUserInformation(this.username).subscribe((data: User) => this.user = data);
     // this.github.mockGetRepos(this.username).subscribe((data: Repository[]) => this.repos = data);
     this.github.getUserInformation(this.username).subscribe((data: User) => this.user = data);
+    this.github.getRepoInfo(this.username).subscribe((data: Repository[]) => this.repos = data);
   }
 
 }
